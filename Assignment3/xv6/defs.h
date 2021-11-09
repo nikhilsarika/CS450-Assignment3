@@ -186,6 +186,7 @@ void            switchkvm(void);
 int             copyout(pde_t*, uint, void*, uint);
 void            clearpteu(pde_t *pgdir, char *uva);
 void 		initSharedPage(void);
+void            printMsg(void);
 void* 		getSharedPage(int, int);
 int 		freeSharedPage(int);
 

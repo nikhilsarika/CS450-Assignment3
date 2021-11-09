@@ -98,7 +98,7 @@ int sys_getSharedPage(void)
   int noOfPages;
   argint(0, &key);
   argint(1, &noOfPages);
-  cprintf("Inside getSharedPage %d : key, %d : noOfPages  \n",key, noOfPages);
+  //cprintf("Inside getSharedPage %d : key, %d : noOfPages  \n",key, noOfPages);
   
   return (int)getSharedPage(key,noOfPages);
 }
@@ -107,7 +107,7 @@ int sys_freeSharedPage(void)
 {
   int key;
   argint(0, &key);
-  cprintf("Inside freeSharedPage %d : key",key);
+//  cprintf("Inside freeSharedPage %d : key",key);
   freeSharedPage(key);
   return 0;
 }

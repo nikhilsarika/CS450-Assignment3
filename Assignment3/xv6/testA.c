@@ -9,16 +9,16 @@ main(int argc, char *argv[])
    p = getSharedPage(0,3);
    test = (int *)p;
    *test = 10; 
-   printf(1,"Pointer Inside Parent : %d\n", test);
+   printf(1,"Address allocated the shared memory : %d\n", test);
 
-   printf(1,"Inside Parent : %d", *test);
+   printf(1,"Value Stored in the shared memory : %d\n", *test);
 
    int q =0;
    int* testSys;
    q = getSharedPage(0,3);
    testSys = (int *)q;
-   printf(1,"Inside Parent after syscall: %d\n", testSys);
-   printf(1,"Pointer Inside Parent after syscall : %d\n", *testSys);
+   printf(1,"Address retrieved from the shared memory: %d\n", testSys);
+   printf(1,"Value retrieved from the shared memory : %d\n", *testSys);
 
   exit();
 }

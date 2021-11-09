@@ -36,6 +36,7 @@ main(void)
   userinit();      // first user process
   mpmain();        // finish this processor's setup
   initSharedPage();
+  printMsg();
 }
 
 // Other CPUs jump here from entryother.S.

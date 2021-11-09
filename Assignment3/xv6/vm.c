@@ -408,7 +408,7 @@ copyout(pde_t *pgdir, uint va, void *p, uint len)
 
 void initSharedPage(void){
   int i, j;
-  cprintf( "%s","Inside initSharedPage");
+  cprintf("Inside initSharedPage");
   for (i = 0; i < NUM_KEYS; i++) {
     is_key_used[i] = 0;
     num_key_pages[i] = 0;
@@ -418,7 +418,9 @@ void initSharedPage(void){
   }
 }
 
-
+void printMsg(void){
+  cprintf("Inside printMsg\n");
+}
 void*
 getSharedPage(int key, int num_pages)
 {
@@ -472,7 +474,7 @@ getSharedPage(int key, int num_pages)
       proc->top -= PGSIZE;
 
       // Map vp to pp    mappages(pgdir, 0, PGSIZE, V2P(mem), PTE_W|PTE_U);
-      cprintf("Just before mapPages\n"); 
+      // cprintf("Just before mapPages\n"); 
       if (mappages(proc->pgdir, addr, PGSIZE, V2P(mem), PTE_W|PTE_U) < 0) {
         return (void*)-1;
       }
@@ -482,9 +484,9 @@ getSharedPage(int key, int num_pages)
     proc->keys[key] = 1;
   } else { 
     // Key is being used
-    cprintf("Else in vm.c : %d\n",proc->keys[key]);
+    //cprintf("Else in vm.c : %d\n",proc->keys[key]);
     if (proc->keys[key] == 0) { 
-	cprintf("if in Else in vm.c\n");
+     //	cprintf("if in Else in vm.c\n");
       for(i = 0; i < NUM_PAGES; i++) {
         // VA.
         void* addr = (void*)(proc->top - PGSIZE);
@@ -501,7 +503,7 @@ getSharedPage(int key, int num_pages)
         }
       }
     }
-     cprintf("After Else in vm.c\n");
+    // cprintf("After Else in vm.c\n");
   }
   return proc->page_addrs[key][num_key_pages[key]-1];
 }

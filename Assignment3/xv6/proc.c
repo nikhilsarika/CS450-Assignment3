@@ -136,10 +136,10 @@ userinit(void)
   p = allocproc();
   
   initproc = p;
-  cprintf("before setupkvm in proc.c");
+//  cprintf("before setupkvm in proc.c");
   if((p->pgdir = setupkvm()) == 0)
     panic("userinit: out of memory?");
-  cprintf("after setukvm in proc.c");
+//  cprintf("after setukvm in proc.c");
   inituvm(p->pgdir, _binary_initcode_start, (int)_binary_initcode_size);
   p->sz = PGSIZE;
   memset(p->tf, 0, sizeof(*p->tf));
